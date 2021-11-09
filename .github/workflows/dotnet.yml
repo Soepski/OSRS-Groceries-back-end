@@ -20,4 +20,4 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore './OSRS Groceries/'
     - name: Build
-      run: dotnet build OSRS Groceries/OSRS Groceries.csproj --no-restore
+      run: dotnet build 'OSRS Groceries/OSRS Groceries.csproj' --no-restore
