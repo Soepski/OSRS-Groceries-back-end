@@ -2,10 +2,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using OSRS_Groceries.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +27,21 @@ namespace OSRS_Groceries
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsDevelopment", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
+            });
+
             services.AddControllers();
-        }
+            services.AddDbContext<DatabaseContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("connectionstring"));
+            });
+        } 
+        
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -39,6 +54,8 @@ namespace OSRS_Groceries
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("CorsDevelopment");
 
             app.UseAuthorization();
 
