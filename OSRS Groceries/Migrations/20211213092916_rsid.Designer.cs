@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OSRS_Groceries.Data;
 
 namespace OSRS_Groceries.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20211213092916_rsid")]
+    partial class rsid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,6 +32,9 @@ namespace OSRS_Groceries.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RSID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Value")
                         .HasColumnType("int");
 
                     b.HasKey("ID");

@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OSRS_Groceries.Data;
 using OSRS_Groceries.HubConfig;
+using OSRS_Groceries.Logic;
+using OSRS_Groceries.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +30,6 @@ namespace OSRS_Groceries
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //added
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAllHeaders",
@@ -40,16 +41,20 @@ namespace OSRS_Groceries
                     });
             });
 
-            //added
             services.AddSignalR(options =>
             {
                 options.EnableDetailedErrors = true;
             });
 
-            //added
+            services.AddScoped<IItemRepo, ItemRepo>();
+
+            services.AddScoped<ItemLogic>();
+
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddControllers();
 
-            services.AddDbContext<DatabaseContext>(options =>
+            services.AddDbContext<ItemContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("connectionstring"));
             });

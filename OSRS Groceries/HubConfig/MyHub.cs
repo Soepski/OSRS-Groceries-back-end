@@ -23,5 +23,12 @@ namespace OSRS_Groceries.HubConfig
 
             await Clients.Client(this.Context.ConnectionId).SendAsync("askServerResponse", tempString);
         }
+
+        public async Task sendMessage(string message)
+        {
+            string tempMessage = "The message was: " + message;
+
+            await Clients.Clients(this.Context.ConnectionId).SendAsync("messageRespone", message);
+        }
     }
 }
