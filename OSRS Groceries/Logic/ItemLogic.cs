@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using Newtonsoft.Json;
 using OSRS_Groceries.Models;
 using OSRS_Groceries.Models.ViewModels;
 using OSRS_Groceries.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace OSRS_Groceries.Logic
@@ -31,6 +33,11 @@ namespace OSRS_Groceries.Logic
         {
             ItemViewModel item = _mapper.Map<ItemViewModel>(_repo.GetItemById(id));
             return item;
+        }
+
+        public bool CreateItem(string name, int rsid)
+        {
+            return true;
         }
     }
 }

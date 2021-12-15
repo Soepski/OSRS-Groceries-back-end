@@ -14,14 +14,19 @@ namespace OSRS_Groceries.Repositories
             _context = context;
         }
 
+        public bool CreateItem(string name, int rsid)
+        {
+            return true;
+        }
+
         public Item GetItemById(int id)
         {
-            return _context.Item.Where(i => i.ID == id).FirstOrDefault();
+            return _context.Items.Where(i => i.ID == id).FirstOrDefault();
         }
 
         public ICollection<Item> GetItems()
         {
-            return _context.Item.ToList();
+            return _context.Items.ToList();
         }
     }
 }

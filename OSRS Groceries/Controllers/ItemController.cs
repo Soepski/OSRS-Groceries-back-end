@@ -9,6 +9,7 @@ using OSRS_Groceries.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace OSRS_Groceries.Controllers
@@ -33,12 +34,27 @@ namespace OSRS_Groceries.Controllers
                 ICollection<ItemViewModel> items = _logic.GetItems();
                 return Ok(items);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError);
+                return this.Content(ex.Message);
             }
         }
 
-        
+        [HttpPost]
+        [Route("create")]
+        public bool CreateItem([FromBody] ItemViewModel item)
+        {
+            try
+            {
+                bool succeeded = _logic.CreateItem(item.Name, item.RSID);
+                return succeeded;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
     }
 }

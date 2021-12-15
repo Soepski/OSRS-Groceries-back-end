@@ -10,6 +10,6 @@ namespace OSRS_Groceries.Data
 
         }
 
-        public virtual DbSet<Item> Item { get; set; }
+        public virtual DbSet<Item> Items { get; set; }
     }
 }

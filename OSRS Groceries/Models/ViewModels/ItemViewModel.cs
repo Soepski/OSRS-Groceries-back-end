@@ -11,8 +11,9 @@ namespace OSRS_Groceries.Models.ViewModels
         public string Name { get; set; }
         public int RSID { get; set; }
 
-        public ItemViewModel(string name, int RSID)
+        public ItemViewModel(int id, string name, int RSID)
         {
+            ID = id;
             Name = name;
             this.RSID = RSID;
         }
