@@ -42,16 +42,16 @@ namespace OSRS_Groceries.Controllers
 
         [HttpPost]
         [Route("create")]
-        public bool CreateItem([FromBody] ItemViewModel item)
+        public IActionResult CreateItem([FromBody] ItemViewModel item)
         {
             try
             {
-                bool succeeded = _logic.CreateItem(item.Name, item.RSID);
-                return succeeded;
+                ItemViewModel itemviewmodel = _logic.CreateItem(item.Name, item.RSID);
+                return Ok(itemviewmodel);
             }
             catch (Exception ex)
             {
-                return false;
+                return this.Content(ex.Message);
             }
         }
 

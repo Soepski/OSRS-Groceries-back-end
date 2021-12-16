@@ -35,9 +35,10 @@ namespace OSRS_Groceries.Logic
             return item;
         }
 
-        public bool CreateItem(string name, int rsid)
+        public ItemViewModel CreateItem(string name, int rsid)
         {
-            return true;
+            ItemViewModel item = _mapper.Map<ItemViewModel>(_repo.CreateItem(name, rsid));
+            return item;
         }
     }
 }

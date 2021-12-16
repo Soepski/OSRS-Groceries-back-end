@@ -14,9 +14,9 @@ namespace OSRS_Groceries.Repositories
             _context = context;
         }
 
-        public bool CreateItem(string name, int rsid)
+        public Item CreateItem(string name, int rsid)
         {
-            return true;
+            return _context.Items.Add(new Item(name, rsid)).Entity;
         }
 
         public Item GetItemById(int id)

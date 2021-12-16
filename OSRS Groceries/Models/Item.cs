@@ -8,6 +8,12 @@ namespace OSRS_Groceries.Models
 {
     public class Item
     {
+        public Item(string name, int rSID)
+        {
+            Name = name;
+            RSID = rSID;
+        }
+
         [Key]
         [Required]
         public int ID { get; set; }
