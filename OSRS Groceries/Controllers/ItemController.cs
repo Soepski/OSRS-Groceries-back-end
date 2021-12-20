@@ -42,17 +42,25 @@ namespace OSRS_Groceries.Controllers
 
         [HttpPost]
         [Route("create")]
-        public IActionResult CreateItem([FromBody] ItemViewModel item)
+        public async Task<ActionResult<ItemViewModel>> CreateItem([FromBody] ItemViewModel item)
         {
             try
             {
-                ItemViewModel itemviewmodel = _logic.CreateItem(item.Name, item.RSID);
-                return Ok(itemviewmodel);
+                ItemViewModel itemviewmodel = _logic.CreateItem(item);
+                return CreatedAtAction("CreateItem", item);
             }
             catch (Exception ex)
             {
                 return this.Content(ex.Message);
             }
+        }
+
+        [HttpDelete]
+        [Route("delete/{id}")]
+        public async Task<ActionResult<ItemViewModel>> DeleteItem(int id)
+        {
+            _logic.DeleteItem(id);
+            return NoContent();
         }
 
 

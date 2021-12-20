@@ -10,17 +10,20 @@ namespace OSRS_Groceries.Models.ViewModels
         public int ID { get; set; }
         public string Name { get; set; }
         public int RSID { get; set; }
-
-        public ItemViewModel(int id, string name, int RSID)
-        {
-            ID = id;
-            Name = name;
-            this.RSID = RSID;
-        }
+        public ItemGEInfo geinfo { get; set; }
+       
 
         public ItemViewModel()
         {
 
+        }
+
+        public ItemViewModel(int iD, string name, int rSID, ItemGEInfo itemGEInfo)
+        {
+            ID = iD;
+            Name = name;
+            RSID = rSID;
+            this.geinfo = itemGEInfo;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using OSRS_Groceries.Models;
 using OSRS_Groceries.Models.ViewModels;
 using OSRS_Groceries.Repositories;
@@ -13,6 +14,7 @@ namespace OSRS_Groceries.Logic
 {
     public class ItemLogic
     {
+        private readonly string apiURL = "https://secure.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json?item=";
         private readonly IItemRepo _repo;
         private readonly IMapper _mapper;
 
@@ -24,8 +26,18 @@ namespace OSRS_Groceries.Logic
 
         public ICollection<ItemViewModel> GetItems()
         {
-            ICollection<Item> items = _repo.GetItems().ToList();
+            
+            ICollection<Models.Item> items = _repo.GetItems().ToList();
             ICollection<ItemViewModel> itemViewModels = _mapper.Map<ICollection<ItemViewModel>>(items);
+
+            foreach (ItemViewModel itemViewModel in itemViewModels)
+            {              
+                string json = new WebClient().DownloadString(apiURL + itemViewModel.RSID);
+                var item = JObject.Parse(json).SelectToken("item").ToString();
+                ItemGEInfo itemgeinfo = JsonConvert.DeserializeObject<ItemGEInfo>(item);
+                itemViewModel.geinfo = itemgeinfo;
+
+            }
             return itemViewModels;
         }
 
@@ -35,10 +47,14 @@ namespace OSRS_Groceries.Logic
             return item;
         }
 
-        public ItemViewModel CreateItem(string name, int rsid)
+        public ItemViewModel CreateItem(ItemViewModel item)
         {
-            ItemViewModel item = _mapper.Map<ItemViewModel>(_repo.CreateItem(name, rsid));
-            return item;
+            return _mapper.Map<ItemViewModel>(_repo.CreateItem(_mapper.Map<Models.Item>(item)));
+        }
+
+        public void DeleteItem(int id)
+        {
+            _repo.DeleteItem(id);
         }
     }
 }
