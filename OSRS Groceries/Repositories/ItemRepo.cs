@@ -37,5 +37,15 @@ namespace OSRS_Groceries.Repositories
         {
             return _context.Items.ToList();
         }
+
+        public Item UpdateItem(Item item)
+        {
+            Item updateitem = _context.Items.SingleOrDefault(i => i.ID == item.ID);
+            updateitem.Name = item.Name;
+            updateitem.RSID = item.RSID;
+            _context.Items.Update(updateitem);
+            _context.SaveChanges();
+            return item;
+        }
     }
 }

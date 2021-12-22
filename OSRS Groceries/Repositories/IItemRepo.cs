@@ -9,5 +9,6 @@ namespace OSRS_Groceries.Repositories
         public Item GetItemById(int id);
         public Item CreateItem(Item item);
         public void DeleteItem(int id);
+        public Item UpdateItem(Item item);
     }
 }

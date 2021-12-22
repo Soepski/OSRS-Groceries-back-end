@@ -12,7 +12,7 @@ namespace OSRS_Groceries.Profiles
     {
         public ItemProfile()
         {
-            CreateMap<Models.Item, ItemViewModel>().ReverseMap();
+            CreateMap<Item, ItemViewModel>().ReverseMap();
         }
     }
 }

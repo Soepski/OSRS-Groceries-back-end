@@ -36,7 +36,7 @@ namespace OSRS_Groceries.Controllers
             }
             catch (Exception ex)
             {
-                return this.Content(ex.Message);
+                return this.Content(ex.Message + " while getting items");
             }
         }
 
@@ -51,7 +51,7 @@ namespace OSRS_Groceries.Controllers
             }
             catch (Exception ex)
             {
-                return this.Content(ex.Message);
+                return this.Content(ex.Message + " while creating item");
             }
         }
 
@@ -59,10 +59,37 @@ namespace OSRS_Groceries.Controllers
         [Route("delete/{id}")]
         public async Task<ActionResult<ItemViewModel>> DeleteItem(int id)
         {
-            _logic.DeleteItem(id);
-            return NoContent();
+            try
+            {
+                _logic.DeleteItem(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return this.Content(ex.Message + " while deleting item");
+            }
+            
         }
 
+        [HttpPut]
+        [Route("update")]
+        public async Task<ActionResult<ItemViewModel>> UpdateItem([FromBody] ItemViewModel item)
+        {
+            try
+            {
+                if (item.RSID != 0 && item.Name != null)
+                {
+                    _logic.UpdateItem(item);
+                }
+                return Ok(_logic.GetItems());
+            }
+            catch (Exception ex)
+            {
+                return this.Content(ex.Message + " while updating item");
+            }
+
+            
+        }
 
     }
 }

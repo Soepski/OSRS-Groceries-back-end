@@ -27,7 +27,7 @@ namespace OSRS_Groceries.Logic
         public ICollection<ItemViewModel> GetItems()
         {
             
-            ICollection<Models.Item> items = _repo.GetItems().ToList();
+            ICollection<Item> items = _repo.GetItems().ToList();
             ICollection<ItemViewModel> itemViewModels = _mapper.Map<ICollection<ItemViewModel>>(items);
 
             foreach (ItemViewModel itemViewModel in itemViewModels)
@@ -36,7 +36,6 @@ namespace OSRS_Groceries.Logic
                 var item = JObject.Parse(json).SelectToken("item").ToString();
                 ItemGEInfo itemgeinfo = JsonConvert.DeserializeObject<ItemGEInfo>(item);
                 itemViewModel.geinfo = itemgeinfo;
-
             }
             return itemViewModels;
         }
@@ -49,12 +48,17 @@ namespace OSRS_Groceries.Logic
 
         public ItemViewModel CreateItem(ItemViewModel item)
         {
-            return _mapper.Map<ItemViewModel>(_repo.CreateItem(_mapper.Map<Models.Item>(item)));
+            return _mapper.Map<ItemViewModel>(_repo.CreateItem(_mapper.Map<Item>(item)));
         }
 
         public void DeleteItem(int id)
         {
             _repo.DeleteItem(id);
+        }
+
+        public ItemViewModel UpdateItem(ItemViewModel item)
+        {
+            return _mapper.Map<ItemViewModel>(_repo.UpdateItem(_mapper.Map<Item>(item)));
         }
     }
 }
