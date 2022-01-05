@@ -24,7 +24,7 @@ namespace OSRS_Groceries.Data
             modelBuilder.Entity<Item_User>()
                 .HasOne(i => i.User)
                 .WithMany(iu => iu.Item_Users)
-                .HasForeignKey(ii => ii.UserID);
+                .HasForeignKey(ii => ii.User);
 
         }
 

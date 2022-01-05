@@ -13,6 +13,7 @@ namespace OSRS_Groceries.Models
             Item = item;
         }
 
+
         public int ID { get; set; }
         public int UserID { get; set; }
         public User User { get; set; }
