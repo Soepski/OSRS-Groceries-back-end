@@ -13,8 +13,23 @@ namespace OSRS_Groceries.Data
         {
 
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Item_User>()
+                .HasOne(i => i.Item)
+                .WithMany(iu => iu.Item_Users)
+                .HasForeignKey(ii => ii.ItemID);
+
+            modelBuilder.Entity<Item_User>()
+                .HasOne(i => i.User)
+                .WithMany(iu => iu.Item_Users)
+                .HasForeignKey(ii => ii.UserID);
+
+        }
+
         public DbSet<Item> Items { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<UserItem> UserItems { get; set; }
+        public DbSet<Item_User> Items_Users { get; set; }
     }
 }

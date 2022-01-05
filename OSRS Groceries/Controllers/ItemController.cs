@@ -30,6 +30,7 @@ namespace OSRS_Groceries.Controllers
         public IActionResult GetAllItems()
         {
             try
+            
             {
                 ICollection<ItemViewModel> items = _logic.GetItems();
                 return Ok(items);

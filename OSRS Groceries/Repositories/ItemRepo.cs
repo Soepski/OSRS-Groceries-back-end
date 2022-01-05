@@ -8,8 +8,8 @@ namespace OSRS_Groceries.Repositories
 {
     public class ItemRepo : IItemRepo
     {
-        private readonly ItemContext _context;
-        public ItemRepo(ItemContext context)
+        private readonly DatabaseContext _context;
+        public ItemRepo(DatabaseContext context)
         {
             _context = context;
         }

@@ -54,7 +54,7 @@ namespace OSRS_Groceries
 
             services.AddControllers();
 
-            services.AddDbContext<ItemContext>(options =>
+            services.AddDbContext<DatabaseContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("connectionstring"));
             });

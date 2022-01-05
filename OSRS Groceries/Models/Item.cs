@@ -19,5 +19,7 @@ namespace OSRS_Groceries.Models
         public int ID { get; set; }
         public string Name { get; set; }
         public int RSID { get; set; }
+
+        public List<Item_User> Item_Users { get; set; }
     }
 }
