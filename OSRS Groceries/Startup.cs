@@ -50,6 +50,10 @@ namespace OSRS_Groceries
 
             services.AddScoped<ItemLogic>();
 
+            services.AddScoped<IGroceriesRepo, GroceriesRepo>();
+
+            services.AddScoped<GroceriesLogic>();
+
             services.AddAutoMapper(typeof(Startup));
 
             services.AddControllers();

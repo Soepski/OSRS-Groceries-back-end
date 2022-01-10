@@ -8,6 +8,6 @@ namespace OSRS_Groceries.Models.ViewModels
     public class UserItemsViewModel
     {
         public User user { get; set; }
-        public List<Item> items { get; set; }
+        public ICollection<Item> items { get; set; }
     }
 }

@@ -8,9 +8,20 @@ namespace OSRS_Groceries.Models
 {
     public class User
     {
+        public User()
+        {
+
+        }
+
+        public User(int id, string name)
+        {
+            this.id = id;
+            this.name = name;
+        }
+
         [Key]
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public List<Item_User> Item_Users { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public List<Item_User> Item_User { get; set; }
     }
 }

@@ -9,7 +9,8 @@ namespace OSRS_Groceries.Repositories
 {
     public interface IGroceriesRepo
     {
-        public ICollection<Item> GetGroceries(User user);
-        public ICollection<Item> CreateGroceries(User user, List<Item> items);
+        public List<int> GetAllGroceries();
+        public List<int> GetGroceriesById(int id);
+        public List<int> CreateGroceries(User user, List<Item> items);
     }
 }

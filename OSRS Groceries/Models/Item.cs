@@ -8,6 +8,16 @@ namespace OSRS_Groceries.Models
 {
     public class Item
     {
+        public Item()
+        {
+
+        }
+
+        public Item(int iD)
+        {
+            ID = iD;
+        }
+
         public Item(string name, int rSID)
         {
             Name = name;
@@ -15,11 +25,10 @@ namespace OSRS_Groceries.Models
         }
 
         [Key]
-        [Required]
         public int ID { get; set; }
         public string Name { get; set; }
         public int RSID { get; set; }
 
-        public List<Item_User> Item_Users { get; set; }
+        public List<Item_User> Item_User { get; set; }
     }
 }

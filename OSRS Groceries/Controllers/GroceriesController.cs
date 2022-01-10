@@ -17,9 +17,25 @@ namespace OSRS_Groceries.Controllers
     {
         private GroceriesLogic _logic;
 
-        public GroceriesController(IGroceriesRepo groceriesRepo, IMapper mapper)
+        public GroceriesController(IGroceriesRepo groceriesRepo, IItemRepo itemRepo, IMapper mapper)
         {
-            _logic = new GroceriesLogic(groceriesRepo, mapper);
+            _logic = new GroceriesLogic(groceriesRepo, itemRepo, mapper);
+        }
+
+        [HttpGet]
+        [Route("all")]
+        public IActionResult GetAllGroceries()
+        {
+            try
+
+            {
+                ICollection<ItemViewModel> items = _logic.GetAllGroceries();
+                return Ok(items);
+            }
+            catch (Exception ex)
+            {
+                return this.Content(ex.Message + " while getting groceries");
+            }
         }
 
         [HttpPost]
@@ -28,12 +44,27 @@ namespace OSRS_Groceries.Controllers
         {
             try
             {
-                List<ItemViewModel> itemViewModels = _logic.CreateGroceries(userItemsViewModel);
-                return CreatedAtAction("CreateGroceries", userItemsViewModel.items);
+                ICollection<ItemViewModel> itemViewModels = _logic.CreateGroceries(userItemsViewModel);
+                return Ok(itemViewModels);
             }
             catch (Exception ex)
             {
-                return this.Content(ex.Message + " while creating item");
+                return this.Content(ex.Message + " while creating groceries");
+            }
+        }
+
+        [HttpGet]
+        [Route("get/{id}")]
+        public async Task<ActionResult<List<ItemViewModel>>> GetGroceriesById(int id)
+        {
+            try
+            {
+                ICollection<ItemViewModel> itemViewModels = _logic.GetGroceriesById(id);
+                return Ok(itemViewModels);
+            }
+            catch (Exception ex)
+            {
+                return this.Content(ex.Message + " while getting groceries by id");
             }
         }
     }
