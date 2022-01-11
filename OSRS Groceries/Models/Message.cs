@@ -7,6 +7,7 @@ namespace OSRS_Groceries.Models
 {
     public class Message
     {
-        public string message { get; set; }
+        public string user { get; set; }
+        public string msgText { get; set; }
     }
 }

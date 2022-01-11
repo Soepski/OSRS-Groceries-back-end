@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OSRS_Groceries.Data;
-using OSRS_Groceries.HubConfig;
+using OSRS_Groceries.Hubs;
 using OSRS_Groceries.Logic;
 using OSRS_Groceries.Repositories;
 using System;
@@ -30,16 +30,13 @@ namespace OSRS_Groceries
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAllHeaders",
-                    builder =>
-                    {
-                        builder.AllowAnyOrigin()
-                                .AllowAnyHeader()
-                                .AllowAnyMethod();
-                    });
-            });
+            services.AddCors(options => options.AddPolicy("CorsPolicy",
+                builder =>
+                {
+                    builder.AllowAnyMethod().AllowAnyHeader()
+                           .WithOrigins("http://localhost:4200")
+                           .AllowCredentials();
+                }));
 
             services.AddSignalR(options =>
             {
@@ -80,12 +77,12 @@ namespace OSRS_Groceries
             app.UseAuthorization();
 
             //added
-            app.UseCors("AllowAllHeaders");
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<MyHub>("/chat");
+                endpoints.MapHub<ChatHub>("/chatsocket");
             });
         }
     }

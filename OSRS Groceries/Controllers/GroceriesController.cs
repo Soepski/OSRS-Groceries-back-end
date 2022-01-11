@@ -34,7 +34,7 @@ namespace OSRS_Groceries.Controllers
             }
             catch (Exception ex)
             {
-                return this.Content(ex.Message + " while getting groceries");
+                return this.Content(ex.Message + " while getting all groceries");
             }
         }
 
