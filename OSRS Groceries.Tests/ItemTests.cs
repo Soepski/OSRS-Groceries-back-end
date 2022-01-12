@@ -29,6 +29,8 @@ namespace OSRS_Groceries.Tests
 
             _logic = new ItemLogic(itemRepo, _mapper);
 
+            FillGeInfo();
+
         }
 
         [TestMethod]
