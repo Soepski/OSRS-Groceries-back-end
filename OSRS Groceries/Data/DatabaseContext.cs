@@ -14,18 +14,18 @@ namespace OSRS_Groceries.Data
 
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {         
-            modelBuilder.Entity<Item_User>()
-                .HasOne(i => i.User)
-                .WithMany(iu => iu.Item_User)
-                .HasForeignKey(ii => ii.UserID);
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{         
+        //    modelBuilder.Entity<Item_User>()
+        //        .HasOne(i => i.User)
+        //        .WithMany(iu => iu.Item_User)
+        //        .HasForeignKey(ii => ii.UserID);
 
-            modelBuilder.Entity<Item_User>()
-                .HasOne(i => i.Item)
-                .WithMany(iu => iu.Item_User)
-                .HasForeignKey(ii => ii.ItemID);
-        }
+        //    modelBuilder.Entity<Item_User>()
+        //        .HasOne(i => i.Item)
+        //        .WithMany(iu => iu.Item_User)
+        //        .HasForeignKey(ii => ii.ItemID);
+        //}
 
         public DbSet<Item> Items { get; set; }
         public DbSet<User> Users { get; set; }
