@@ -18,7 +18,7 @@ namespace OSRS_Groceries.Controllers
     [ApiController]
     public class ItemController : ControllerBase
     {
-        private ItemLogic _logic;
+        private readonly ItemLogic _logic;
 
         public ItemController(IItemRepo itemRepo, IMapper mapper)
         {
@@ -48,7 +48,7 @@ namespace OSRS_Groceries.Controllers
             try
             {
                 ItemViewModel itemviewmodel = _logic.CreateItem(item);
-                return CreatedAtAction("CreateItem", item);
+                return CreatedAtAction("CreateItem", itemviewmodel);
             }
             catch (Exception ex)
             {

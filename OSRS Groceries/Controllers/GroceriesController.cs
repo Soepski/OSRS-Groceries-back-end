@@ -15,7 +15,7 @@ namespace OSRS_Groceries.Controllers
     [ApiController]
     public class GroceriesController : ControllerBase
     {
-        private GroceriesLogic _logic;
+        private readonly GroceriesLogic _logic;
 
         public GroceriesController(IGroceriesRepo groceriesRepo, IItemRepo itemRepo, IMapper mapper)
         {
