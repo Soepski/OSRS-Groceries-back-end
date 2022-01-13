@@ -1,4 +1,4 @@
-name: .NET
+name: Continuous Integration and Deployment
 
 on:
   push:
