@@ -40,7 +40,9 @@ namespace OSRS_Groceries.Controllers
 
         [HttpPost]
         [Route("create")]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<ActionResult<List<ItemViewModel>>> CreateGroceries([FromBody] UserItemsViewModel userItemsViewModel)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             try
             {
@@ -55,7 +57,9 @@ namespace OSRS_Groceries.Controllers
 
         [HttpGet]
         [Route("get/{id}")]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<ActionResult<List<ItemViewModel>>> GetGroceriesById(int id)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             try
             {
