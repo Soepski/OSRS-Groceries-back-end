@@ -13,7 +13,6 @@ namespace OSRS_Groceries.Tests
     public class GroceriesTests
     {
         private readonly GroceriesLogic _logic;
-        private readonly ItemLogic _itemlogic;
         private readonly IMapper _mapper;
         private readonly ItemGEInfo itemGeInfo = new ItemGEInfo();
 

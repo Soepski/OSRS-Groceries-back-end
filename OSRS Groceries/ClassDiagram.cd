@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OSRS_Groceries.Controllers.ChatController" Collapsed="true">
+    <Position X="14" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\ChatController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSRS_Groceries.Controllers.GroceriesController">
+    <Position X="1.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAIAAAAAAAAAAMAAAAAA=</HashCode>
+      <FileName>Controllers\GroceriesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSRS_Groceries.Controllers.ItemController">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAQAAAAAAAAAAAAQAAAAAAAEAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Controllers\ItemController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSRS_Groceries.Controllers.SkillController" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAACAEAAAAAAAAAAAIACAg=</HashCode>
+      <FileName>Controllers\SkillController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSRS_Groceries.Logic.GroceriesLogic">
+    <Position X="3.75" Y="4.25" Width="1.5" />
+    <AssociationLine Name="_itemrepo" Type="OSRS_Groceries.Repositories.IItemRepo">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.001" Y="0.06" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQARQAAAAIAAgAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Logic\GroceriesLogic.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_itemrepo" />
+      <Field Name="_repo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="OSRS_Groceries.Logic.ItemLogic">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAQIAAAAAAAAAAAQARQAACAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\ItemLogic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSRS_Groceries.Repositories.GroceriesRepo" BaseTypeListCollapsed="true">
+    <Position X="6" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAQAAAAAAAIAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Repositories\GroceriesRepo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_context" />
+    </ShowAsAssociation>
+    <Lollipop Orientation="Bottom" Position="0.144" />
+  </Class>
+  <Class Name="OSRS_Groceries.Repositories.ItemRepo" BaseTypeListCollapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <AssociationLine Name="_context" Type="OSRS_Groceries.Data.DatabaseContext" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.5" Y="1.909" />
+        <Point X="9.312" Y="1.909" />
+        <Point X="9.312" Y="2.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AABAQAAAAAAABAAAAQAAAAACAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\ItemRepo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_context" />
+    </ShowAsAssociation>
+    <Lollipop Orientation="Bottom" Position="0.223" />
+  </Class>
+  <Class Name="OSRS_Groceries.Hubs.ChatHub" Collapsed="true">
+    <Position X="14.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Hubs\ChatHub.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSRS_Groceries.Data.DatabaseContext">
+    <Position X="8.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAACIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\DatabaseContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="OSRS_Groceries.Repositories.IGroceriesRepo" Collapsed="true">
+    <Position X="6" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAIAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Repositories\IGroceriesRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OSRS_Groceries.Repositories.IItemRepo" Collapsed="true">
+    <Position X="6" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAQAAAAAAAAAAAAQAAAAACAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\IItemRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
