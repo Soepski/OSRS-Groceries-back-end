@@ -37,6 +37,16 @@ namespace OSRS_Groceries.Logic
                 ItemGEInfo itemgeinfo = JsonConvert.DeserializeObject<ItemGEInfo>(item);
                 itemViewModel.geinfo = itemgeinfo;
             }
+
+            return itemViewModels;
+        }
+
+        public ICollection<ItemViewModel> GetItemsTest()
+        {
+            
+            ICollection<Item> items = _repo.GetItems().ToList();
+            ICollection<ItemViewModel> itemViewModels = _mapper.Map<ICollection<ItemViewModel>>(items);
+
             return itemViewModels;
         }
 

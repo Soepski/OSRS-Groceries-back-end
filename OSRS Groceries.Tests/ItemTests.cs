@@ -5,6 +5,7 @@ using OSRS_Groceries.Models;
 using OSRS_Groceries.Repositories;
 using OSRS_Groceries.Models.ViewModels;
 using OSRS_Groceries.Tests.MockContexts;
+using System.Collections.Generic;
 
 namespace OSRS_Groceries.Tests
 {
@@ -45,6 +46,63 @@ namespace OSRS_Groceries.Tests
             //Assert
             Assert.AreEqual(item.Name, itemViewModel.Name);
         }
+
+        [TestMethod]
+        public void NewItem_InValid()
+        {
+            //Arrange
+            ItemViewModel item = new ItemViewModel();
+
+            //Act
+            ItemViewModel itemViewModel = _logic.CreateItem(item);
+
+            //Assert
+            Assert.IsNull(itemViewModel.Name);
+        }
+
+        [TestMethod]
+        public void UpdateItem_Valid()
+        {
+            //Arrange
+            ItemViewModel item = new ItemViewModel(1, "Twisted bow", 20997, itemGeInfo);
+
+            //Act
+            ItemViewModel itemViewModel = item;
+            itemViewModel = _logic.UpdateItem(itemViewModel);
+
+            //Assert
+            Assert.AreNotEqual(item.Name, itemViewModel.Name);
+        }
+
+        [TestMethod]
+        public void GetAllItems_Valid()
+        {
+            //Arrange
+            ICollection<ItemViewModel> itemViewModels = new List<ItemViewModel>();
+
+            //Act
+            itemViewModels = _logic.GetItems();
+
+            //Assert
+            Assert.AreEqual(itemViewModels.Count, _logic.GetItems().Count);
+        }
+
+        [TestMethod]
+        public void GetAllItems_InValid()
+        {
+            //Arrange
+            ICollection<ItemViewModel> itemViewModels = new List<ItemViewModel>();
+
+            //Act
+            itemViewModels = _logic.GetItemsTest();
+            itemViewModels.Add(new ItemViewModel(0, "test", 5, itemGeInfo));
+
+            //Assert
+            Assert.AreNotEqual(itemViewModels.Count, _logic.GetItemsTest().Count);
+        }
+
+
+
 
         private void FillGeInfo()
         {

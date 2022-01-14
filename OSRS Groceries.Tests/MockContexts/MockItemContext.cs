@@ -38,14 +38,18 @@ namespace OSRS_Groceries.Tests.MockContexts
 
         public Item UpdateItem(Item item)
         {
-            throw new NotImplementedException();
+            Item itemnew = new Item();
+            itemnew.Name = "Dragon warhammer";
+            return itemnew;
         }
 
         private void FakeItems()
         {
+            int[] itemids = new int[] { 11832, 22324, 11834, 13239, 13576 };
+
             for (int i = 0; i < 5; i++)
             {
-                items.Add(new Item { ID = i, Name = "Title" + i, RSID = 1000 + 1 });
+                items.Add(new Item { ID = i, Name = "Title" + i, RSID = itemids[i] });
             }
 
         }

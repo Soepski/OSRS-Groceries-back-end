@@ -22,6 +22,5 @@ namespace OSRS_Groceries.Models
         [Key]
         public int id { get; set; }
         public string name { get; set; }
-        //public List<Item_User> Item_User { get; set; }
     }
 }
