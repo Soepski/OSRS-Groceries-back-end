@@ -7,11 +7,11 @@ using System.Text;
 
 namespace OSRS_Groceries.Tests.MockContexts
 {
-    class MockItemContext : IItemRepo
+    class MockItemsContext : IItemRepo
     {
         private List<Item> items = new List<Item>();
 
-        public MockItemContext()
+        public MockItemsContext()
         {
             FakeItems();
         }

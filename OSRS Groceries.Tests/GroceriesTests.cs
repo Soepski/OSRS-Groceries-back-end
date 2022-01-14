@@ -10,13 +10,14 @@ using System.Collections.Generic;
 namespace OSRS_Groceries.Tests
 {
     [TestClass]
-    public class ItemTests
+    public class GroceriesTests
     {
-        private readonly ItemLogic _logic;
+        private readonly GroceriesLogic _logic;
+        private readonly ItemLogic _itemlogic;
         private readonly IMapper _mapper;
         private readonly ItemGEInfo itemGeInfo = new ItemGEInfo();
 
-        public ItemTests()
+        public GroceriesTests()
         { 
 
             MapperConfiguration config = new MapperConfiguration(cfg =>
@@ -26,82 +27,61 @@ namespace OSRS_Groceries.Tests
 
             _mapper = new Mapper(config);
 
+            IGroceriesRepo groceriesRepo = new MockGroceriesContext();
             IItemRepo itemRepo = new MockItemsContext();
 
-            _logic = new ItemLogic(itemRepo, _mapper);
+            _logic = new GroceriesLogic(groceriesRepo, itemRepo, _mapper);
 
             FillGeInfo();
 
         }
+   
 
         [TestMethod]
-        public void NewItem_Valid()
+        public void GetAllGroceries_Valid()
         {
             //Arrange
-            ItemViewModel item = new ItemViewModel(1, "Twisted bow", 20997, itemGeInfo);
 
             //Act
-            ItemViewModel itemViewModel = _logic.CreateItem(item);
+            ICollection<ItemViewModel> itemViewModels = _logic.GetAllGroceries();
 
             //Assert
-            Assert.AreEqual(item.Name, itemViewModel.Name);
+            Assert.IsNotNull(itemViewModels);
         }
 
         [TestMethod]
-        public void NewItem_InValid()
+        public void GetAllGroceries_InValid()
         {
             //Arrange
-            ItemViewModel item = new ItemViewModel();
 
             //Act
-            ItemViewModel itemViewModel = _logic.CreateItem(item);
+            List<ItemViewModel> itemViewModels = new List<ItemViewModel>();
 
             //Assert
-            Assert.IsNull(itemViewModel.Name);
+            Assert.IsNotNull(itemViewModels);
         }
 
         [TestMethod]
-        public void UpdateItem_Valid()
+        public void CreateGroceries_Valid()
         {
             //Arrange
-            ItemViewModel item = new ItemViewModel(1, "Twisted bow", 20997, itemGeInfo);
+            User user = new User(5, "Ron Liebregts");
+            List<Item> items = new List<Item>();
+            items.Add(new Item("helm", 5));
+            items.Add(new Item("zwaard", 10));
+            items.Add(new Item("schild", 15));
+
+            UserItemsViewModel userItemsViewModel = new UserItemsViewModel();
+            userItemsViewModel.user = user;
+            userItemsViewModel.items = items;
 
             //Act
-            ItemViewModel itemViewModel = item;
-            itemViewModel = _logic.UpdateItem(itemViewModel);
+            ICollection<ItemViewModel> itemViewModels = _logic.CreateGroceries(userItemsViewModel);
 
             //Assert
-            Assert.AreNotEqual(item.Name, itemViewModel.Name);
+            Assert.IsNotNull(itemViewModels);
         }
-
-        [TestMethod]
-        public void GetAllItems_Valid()
-        {
-            //Arrange
-            ICollection<ItemViewModel> itemViewModels = new List<ItemViewModel>();
-
-            //Act
-            itemViewModels = _logic.GetItems();
-
-            //Assert
-            Assert.AreEqual(itemViewModels.Count, _logic.GetItems().Count);
-        }
-
-        [TestMethod]
-        public void GetAllItems_InValid()
-        {
-            //Arrange
-            ICollection<ItemViewModel> itemViewModels = new List<ItemViewModel>();
-
-            //Act
-            itemViewModels = _logic.GetItemsTest();
-            itemViewModels.Add(new ItemViewModel(0, "test", 5, itemGeInfo));
-
-            //Assert
-            Assert.AreNotEqual(itemViewModels.Count, _logic.GetItemsTest().Count);
-        }
-
-
+        
 
 
         private void FillGeInfo()
