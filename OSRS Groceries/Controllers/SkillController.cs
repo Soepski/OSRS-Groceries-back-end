@@ -63,6 +63,8 @@ namespace OSRS_Groceries.Controllers
                 }
             }
 
+            client.Dispose();
+
             Highscores highscore = new Highscores(skills, activities);
 
             return highscore;

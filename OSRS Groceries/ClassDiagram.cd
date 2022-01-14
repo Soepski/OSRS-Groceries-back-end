@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="OSRS_Groceries.Controllers.ChatController" Collapsed="true">
-    <Position X="14" Y="4.5" Width="1.5" />
+  <Class Name="OSRS_Groceries.Controllers.ChatController">
+    <Position X="10.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAEAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\ChatController.cs</FileName>
@@ -13,6 +13,9 @@
       <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAIAAAAAAAAAAMAAAAAA=</HashCode>
       <FileName>Controllers\GroceriesController.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_logic" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="OSRS_Groceries.Controllers.ItemController">
     <Position X="1.25" Y="0.5" Width="1.5" />
@@ -20,9 +23,12 @@
       <HashCode>AABAQAAAAAAAAAAAAQAAAAAAAEAAAAAAAAAAIAAAAAA=</HashCode>
       <FileName>Controllers\ItemController.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_logic" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="OSRS_Groceries.Controllers.SkillController" Collapsed="true">
-    <Position X="8" Y="0.5" Width="1.5" />
+  <Class Name="OSRS_Groceries.Controllers.SkillController">
+    <Position X="10.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAABAAAAAAAAACAEAAAAAAAAAAAIACAg=</HashCode>
       <FileName>Controllers\SkillController.cs</FileName>
@@ -32,7 +38,7 @@
     <Position X="3.75" Y="4.25" Width="1.5" />
     <AssociationLine Name="_itemrepo" Type="OSRS_Groceries.Repositories.IItemRepo">
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.001" Y="0.06" />
+        <Position X="-0.561" Y="-0.711" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -40,8 +46,8 @@
       <FileName>Logic\GroceriesLogic.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="_itemrepo" />
       <Field Name="_repo" />
+      <Field Name="_itemrepo" />
     </ShowAsAssociation>
   </Class>
   <Class Name="OSRS_Groceries.Logic.ItemLogic">
@@ -50,6 +56,9 @@
       <HashCode>AABAQIAAAAAAAAAAAQARQAACAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>Logic\ItemLogic.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_repo" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="OSRS_Groceries.Repositories.GroceriesRepo" BaseTypeListCollapsed="true">
     <Position X="6" Y="4.25" Width="1.5" />
@@ -70,6 +79,9 @@
         <Point X="9.312" Y="1.909" />
         <Point X="9.312" Y="2.75" />
       </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.975" Y="0.935" />
+      </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
       <HashCode>AABAQAAAAAAABAAAAQAAAAACAAAAAgAAAAAAAAAAAAA=</HashCode>
@@ -80,8 +92,8 @@
     </ShowAsAssociation>
     <Lollipop Orientation="Bottom" Position="0.223" />
   </Class>
-  <Class Name="OSRS_Groceries.Hubs.ChatHub" Collapsed="true">
-    <Position X="14.25" Y="6.25" Width="1.5" />
+  <Class Name="OSRS_Groceries.Hubs.ChatHub">
+    <Position X="10.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Hubs\ChatHub.cs</FileName>
